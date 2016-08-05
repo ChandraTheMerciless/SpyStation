@@ -1,0 +1,33 @@
+*{
+    margin:0;
+    padding:0;
+}
+
+body{
+    padding:20px;
+    background-color:#2B2521;
+    color:#74E234;
+    font-size:14px;
+    font-family:"Lucida Console", Monaco, monospace;
+}
+
+p{
+    margin-bottom:5px;
+}
+
+input{
+    background-color:#2B2521;
+    border:none;
+    color:#74E234;
+    cursor:hand;
+    font-size:14px;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    width:90%;
+}
+
+input:focus{
+    outline:none;
+}
+

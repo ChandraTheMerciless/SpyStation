@@ -1,0 +1,30 @@
+{
+  "name": "number-station-generator",
+  "version": "1.0.0",
+  "description": "Hello there! I've decided to create a number station generator (a slow process, as I've been putting it off until now). I'm planning on sticking to vanilla JS for now, but might develop it in an app framework, depending on which one is good for deploying to Android phones.",
+  "main": "js/app.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChandraTheMerciless/NumberStation.git"
+  },
+  "author": "Chandra Asar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ChandraTheMerciless/NumberStation/issues"
+  },
+  "homepage": "https://github.com/ChandraTheMerciless/NumberStation#readme",
+  "dependencies": {
+    "twit": "^2.2.4"
+  },
+  "devDependencies": {
+    "body-parser": "^1.15.2",
+    "connect": "^3.4.1",
+    "express": "^4.14.0"
+  }
+}
