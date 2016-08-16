@@ -15,6 +15,23 @@ var AppModule = function () {
 
             code = code.toString();
 
+            //put into separate functions
+
+            var paraCode = document.createElement("p");
+            var nodeCode = document.createTextNode("Code code code");
+            paraCode.appendChild(nodeCode);
+
+            var element = document.getElementById("console-container");
+            var msgInput = document.getElementById("msg-start");
+            element.insertBefore(paraCode,msgInput);
+
+            var paraInstruc = document.createElement("p");
+            var nodeInstruc = document.createTextNode("What's your message?");
+            paraInstruc.appendChild(nodeInstruc);
+
+            element.insertBefore(paraInstruc,msgInput);
+            //into separate function end
+
             DomObj.ringTone.play();
 
             DomObj.ringTone.addEventListener('ended', function () {
