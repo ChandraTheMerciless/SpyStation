@@ -1,7 +1,7 @@
 'use strict';
 
-var Cypher = {
-    createAlph: function () {
+var Cypher = (function () {
+    function createAlph() {
         var alph = [];
         for (var i = 0; i < 26; i++) {
             var char = String.fromCharCode(97 + i);
@@ -9,10 +9,11 @@ var Cypher = {
         }
 
         return alph;
-    },
+    }
 
-    createFullArray: function () {
-        var allChars = this.createAlph();
+
+    function createFullArray() {
+        var allChars = createAlph();
         allChars.push(String.fromCharCode(32));
         for (var i = 0; i <= 9; i++) {
             var char = String.fromCharCode(48 + i);
@@ -20,25 +21,25 @@ var Cypher = {
         }
 
         return allChars;
-    },
+    }
 
-    createEncodingArray: function () {
-        var encode = this.createFullArray();
+    function createEncodingArray() {
+        var encode = createFullArray();
         for (var i = 0; i < 10; i++) {
             encode.push(encode.shift());
         }
 
         return encode;
-    },
+    }
 
-    encodeAlph: function (msg) {
+    function encodeAlph(msg) {
         msg = msg.toLowerCase();
 
         var originalString = [];
-        var originalArr = this.createFullArray();
+        var originalArr = createFullArray();
 
         var encodedString = [];
-        var encodingArr = this.createEncodingArray();
+        var encodingArr = createEncodingArray();
 
 
         for (var i = 0; i < msg.length; i++) {
@@ -59,30 +60,30 @@ var Cypher = {
             encodedString.push(charEn);
         }
 
-        this.storeMsg(encodedString);
+        storeMsg(encodedString);
         return encodedString;
-    },
+    }
 
-    storeMsg: function(encodedString){
+    function storeMsg(encodedString) {
         localStorage.setItem("msg", encodedString);
-    },
+    }
 
-    decodeAlph: function () {
+    function decodeAlph() {
         //Right now I'm "decoding" this by running it through the encoding array and concatenating the alph value.
         // There has to be a better way to do this, though
 
         var decodedMsg = "";
 
-        var originalArr = this.createFullArray();
+        var originalArr = createFullArray();
 
-        var encodedArr = this.createEncodingArray();
+        var encodedArr = createEncodingArray();
 
         var encodedString = [3, 31, 11, 31, 7];
 
-        for(var i = 0; i < encodedString.length; i++){
+        for (var i = 0; i < encodedString.length; i++) {
             var temp;
             temp = encodedString[i] + 10;
-            if(temp > 37){
+            if (temp > 37) {
                 temp = temp - 37;
             }
             decodedMsg += originalArr[temp];
@@ -91,4 +92,8 @@ var Cypher = {
         console.log(decodedMsg);
         return decodedMsg;
     }
-};
+
+    return {
+        encodeAlph: encodeAlph
+    }
+})();
