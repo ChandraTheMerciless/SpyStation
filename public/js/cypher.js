@@ -1,6 +1,7 @@
 'use strict';
 
 var Cypher = (function () {
+  //creates array of alphabetical characters
     function createAlph() {
         var alph = [];
         for (var i = 0; i < 26; i++) {
@@ -11,7 +12,7 @@ var Cypher = (function () {
         return alph;
     }
 
-
+  //adds digits to array of alphabetical characters
     function createFullArray() {
         var allChars = createAlph();
         allChars.push(String.fromCharCode(32));
@@ -23,6 +24,7 @@ var Cypher = (function () {
         return allChars;
     }
 
+   //creates Caesar cypher by removing first ten elements of full array and placing them at end
     function createEncodingArray() {
         var encode = createFullArray();
         for (var i = 0; i < 10; i++) {
@@ -32,6 +34,7 @@ var Cypher = (function () {
         return encode;
     }
 
+  //accepts user input and encodes msg to array of numbers
     function encodeAlph(msg) {
         msg = msg.toLowerCase();
 
@@ -51,7 +54,6 @@ var Cypher = (function () {
             originalString.push(charOr);
         }
 
-
         for (var i = 0; i < msg.length; i++) {
             var charEn = encodingArr.indexOf(msg[i]);
             if (charEn < 0) {
@@ -59,26 +61,20 @@ var Cypher = (function () {
             }
             encodedString.push(charEn);
         }
-
-        storeMsg(encodedString);
         return encodedString;
     }
 
-    function storeMsg(encodedString) {
-        localStorage.setItem("msg", encodedString);
-    }
-
-    function decodeAlph() {
-        //Right now I'm "decoding" this by running it through the encoding array and concatenating the alph value.
-        // There has to be a better way to do this, though
-
+   //decodes array of numbers retrieved from Twitter by passing numbers through same group of arrays
+    function decodeAlph(arrayFromTwitter) {
         var decodedMsg = "";
 
         var originalArr = createFullArray();
 
         var encodedArr = createEncodingArray();
 
-        var encodedString = [3, 31, 11, 31, 7];
+        var encodedString = arrayFromTwitter.split(",").map(function(item) {
+            return parseInt(item, 10);
+        });
 
         for (var i = 0; i < encodedString.length; i++) {
             var temp;
@@ -89,11 +85,12 @@ var Cypher = (function () {
             decodedMsg += originalArr[temp];
         }
 
-        console.log(decodedMsg);
         return decodedMsg;
     }
 
+   //return two public functions
     return {
-        encodeAlph: encodeAlph
+        encodeAlph: encodeAlph,
+        decodeAlph: decodeAlph
     }
 })();
