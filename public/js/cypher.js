@@ -1,6 +1,10 @@
 'use strict';
 
 var Cypher = (function () {
+
+
+
+
   //creates array of alphabetical characters
     function createAlph() {
         var alph = [];
@@ -11,6 +15,10 @@ var Cypher = (function () {
 
         return alph;
     }
+
+
+
+
 
   //adds digits to array of alphabetical characters
     function createFullArray() {
@@ -24,7 +32,13 @@ var Cypher = (function () {
         return allChars;
     }
 
-   //creates Caesar cypher by removing first ten elements of full array and placing them at end
+
+
+
+
+
+   //creates Caesar cypher by removing first ten elements
+   //of full array and placing them at end
     function createEncodingArray() {
         var encode = createFullArray();
         for (var i = 0; i < 10; i++) {
@@ -34,14 +48,19 @@ var Cypher = (function () {
         return encode;
     }
 
+
+
+
+
+
   //accepts user input and encodes msg to array of numbers
     function encodeAlph(msg) {
         msg = msg.toLowerCase();
 
         var originalString = [];
-        var originalArr = createFullArray();
-
         var encodedString = [];
+
+        var originalArr = createFullArray();
         var encodingArr = createEncodingArray();
 
 
@@ -64,7 +83,13 @@ var Cypher = (function () {
         return encodedString;
     }
 
-   //decodes array of numbers retrieved from Twitter by passing numbers through same group of arrays
+
+
+
+
+
+   //decodes array of numbers retrieved from Twitter by passing numbers through
+   //same group of arrays
     function decodeAlph(arrayFromTwitter) {
         var decodedMsg = "";
 
@@ -77,8 +102,7 @@ var Cypher = (function () {
         });
 
         for (var i = 0; i < encodedString.length; i++) {
-            var temp;
-            temp = encodedString[i] + 10;
+            var temp = encodedString[i] + 10;
             if (temp > 37) {
                 temp = temp - 37;
             }
@@ -88,9 +112,17 @@ var Cypher = (function () {
         return decodedMsg;
     }
 
+
+
+
+
    //return two public functions
     return {
         encodeAlph: encodeAlph,
         decodeAlph: decodeAlph
     }
+
+
+
+
 })();
