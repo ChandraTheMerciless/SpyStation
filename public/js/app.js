@@ -59,15 +59,15 @@ var AppModule = function () {
         var code = Cypher.encodeAlph(originalMsg);
         var codeStr = code.toString();
 
-        // DomObj.ringTone.play();
+        //DomObj.ringTone.play();
         //
-        // DomObj.ringTone.addEventListener('ended', function () {
-        //     responsiveVoice.speak(codeStr, "UK English Male",
-        //         {
-        //             //rate: 0.8,
-        //             //pitch: 1
-        //         });
-        // });
+        //DomObj.ringTone.addEventListener('ended', function () {
+        //    responsiveVoice.speak(codeStr, "UK English Male",
+        //        {
+        //            //rate: 0.8,
+        //            //pitch: 1
+        //        });
+        //});
 
         //tweets going to server should be in json format
         var tweet = {

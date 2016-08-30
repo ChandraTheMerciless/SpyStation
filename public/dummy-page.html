@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <!-- <link rel="stylesheet" type="text/css" href="css/style.css"/> -->
+</head>
+<body>
+<div id="console-container">
+    <h3>Intern's side</h3>
+    <p><strong>Format:</strong></p>
+    <p>#msg[text], [text in message]</p>
+    <p><strong>Example</strong></p>
+    <p>#msghello, hello world</p>
+    <hr/>
+    <h3>Bond's side</h3>
+    <p><strong>Format:</strong></p>
+    <p>decryptMsg, [msghello]</p>
+    <p><strong>Example</strong></p>
+    <p>decryptMsg, msghello</p>
+    <hr/>
+    <input type="text" id="secret-msg" />
+    <div id="msg-start"></div>
+</div>
+
+<script src="https://code.responsivevoice.org/responsivevoice.src.js"></script>
+<!--<script src='//vws.responsivevoice.com/v/e?key=CNpRoaJB'></script>-->
+<script src="js/cypher.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
