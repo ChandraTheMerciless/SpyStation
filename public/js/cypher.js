@@ -41,7 +41,7 @@ var Cypher = (function () {
    //of full array and placing them at end
     function createEncodingArray() {
         var encode = createFullArray();
-        for (var i = 0; i < 10; i++) {
+        for (var i = 0; i < 7; i++) {
             encode.push(encode.shift());
         }
 
@@ -101,9 +101,9 @@ var Cypher = (function () {
             return parseInt(item, 10);
         });
 
-        for (var i = 0; i < encodedString.length; i++) {
-            var temp = encodedString[i] + 10;
-            if (temp > 37) {
+        for (var i = 1; i < encodedString.length; i++) {
+            var temp = encodedString[i] + 7;
+            if (temp >= 37) {
                 temp = temp - 37;
             }
             decodedMsg += originalArr[temp];

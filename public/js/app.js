@@ -36,7 +36,6 @@ var AppModule = function () {
         var getTweetPass = "decryptMsg";
 
         var strArray = userInput.split(",");
-        console.log(strArray);
 
         var userPassword = strArray[0];
         var userReq = strArray[1];
