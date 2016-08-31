@@ -37,7 +37,7 @@ var Cypher = (function () {
 
 
 
-   //creates Caesar cypher by removing first ten elements
+   //creates Caesar cypher by removing first 7 elements
    //of full array and placing them at end
     function createEncodingArray() {
         var encode = createFullArray();
@@ -63,9 +63,7 @@ var Cypher = (function () {
         var originalArr = createFullArray();
         var encodingArr = createEncodingArray();
 
-
         for (var i = 0; i < msg.length; i++) {
-            //console.log(msg[i]);
             var charOr = originalArr.indexOf(msg[i]);
             if (charOr < 0) {
                 charOr = 99;
@@ -88,24 +86,24 @@ var Cypher = (function () {
 
 
 
-   //decodes array of numbers retrieved from Twitter by passing numbers through
+   //decodes an encoded array of numbers by passing them through
    //same group of arrays
-    function decodeAlph(arrayFromTwitter) {
+    function decodeAlph(array) {
         var decodedMsg = "";
 
         var originalArr = createFullArray();
 
-        var encodedArr = createEncodingArray();
-
-        var encodedString = arrayFromTwitter.split(",").map(function(item) {
+        var encodedNumberArray = array.split(",").map(function(item) {
             return parseInt(item, 10);
         });
 
-        for (var i = 1; i < encodedString.length; i++) {
-            var temp = encodedString[i] + 7;
+        for (var i = 0; i < encodedNumberArray.length; i++) {
+            var temp = encodedNumberArray[i] + 7;
             if (temp >= 37) {
                 temp = temp - 37;
             }
+            //temp element corresponds to numbers, which can be mapped to
+            //encoding array to produce original message
             decodedMsg += originalArr[temp];
         }
 
