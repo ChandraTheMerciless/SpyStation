@@ -1,7 +1,17 @@
 'use strict';
 
 describe('App', function(){
-    it('should see the app file', function(){
-        expect(msgModule).toBeDefined();
+    var DomObj;
+
+    beforeEach(function(){
+        DomObj = {
+            userInput: {
+                value: ""
+            }
+        };
+    });
+
+    it('should exist', function(){
+        expect(AppModule.handleInput).toBeDefined();
     });
 });
